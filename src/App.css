@@ -25,15 +25,16 @@ font-size: 20px;
 .task-list-header {
   text-align: left;
   border: 1px solid #f0f1f2;
-  padding: 5px;
+  padding: 3px;
   width: 300px;
   font-size: 15px;
   margin: 27px 0 0 0;
   background-color: #f0f1f2;
 }
 img {
+  margin: 11px 0 0 0;
   height: 23px;
-  padding: 16px 0px 0 0;
+  padding: 3px;
   cursor: pointer;
 }
 .task-list-item {
@@ -44,8 +45,31 @@ img {
   border: 1px solid #f0f1f2;
 }
 p.task-name {
-  width: 223px;
+  padding: 3px 2px 2px 16px;
+  width: 200px;
+}
+input[type="checkbox"] {
+  height: 44px;
 }
 .edit-check{
   display: flex;
+}
+.r{
+  display: flex;
+  margin: 3px 0 9px 0;
+}
+.r input{
+  width: 200px;
+}
+.r input,text{
+  border-top: 0;
+  border-left: 0;
+  border-right: 0;
+  border-bottom: solid 2px #f0f1f2;
+}
+.r text{
+  border-top: 0;
+  border-left: 0;
+  border-right: 0;
+  border-bottom: solid 2px #f0f1f2;
 }

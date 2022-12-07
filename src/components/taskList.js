@@ -7,10 +7,11 @@ function TaskList(props) {
             <h3 className="task-list-header"> Task list</h3>
             {props.task.map((taskItem, i) => {
                 return (
-                    <div className="task-list-item" key={i}>
+                    // return pura div 
+                    <div className="task-list-item" key={i}> 
                         <input type="checkbox" onClick={() => props.checkbox(i)} />
                         {props.edit === i ?
-                            <div>< input type="text" defaultValue={taskItem} onChange={props.Store} />
+                            <div className="r" ><input type="text" defaultValue={taskItem} onChange={props.Store} />
                                 <img className="check.png" src="\assets\check.png" onClick={() => props.EditClick(i)} /> </div>
                             :
                             <div className="edit-check" > <p className="task-name">{taskItem} </p>

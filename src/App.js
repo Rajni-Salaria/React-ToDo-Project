@@ -7,14 +7,15 @@ import { useState } from "react";
 
 
 function App() {
+  // state  and useState and type 
   let [text, setText] = useState("");
-  let [update, setUpdate] = useState([]);
+  let [tasklistItems, setTasklistItems] = useState([]);          
   let [complete, setComplete] = useState([]);
   let [edit, SetEdit] = useState("");
   let [inpchange, setInpchange] = useState("")
 
   // let Array = ['cleaning', 'reading', 'lunch']
-  //............... setupdate function change ho rha hai to update ki value me text likhna hai...............
+  //............... setTasklistItems function change ho rha hai to tasklistItems ki value me text likhna hai...............
 
   // .............Using for getting value................
   function handleChange(event) {
@@ -26,9 +27,14 @@ function App() {
   //   setInpchange(event.target.value)
   // }
   // ..............Event Ho rha hai ..............................
-  // Add button par click krte hi update value dega 
+  // Add button par click krte hi tasklistItems value dega 
   function btnClick() {
-    setUpdate([...update, text]);
+    if (text === ""){
+      alert("Enter the task")
+    } else{
+      setTasklistItems([...tasklistItems, text]);
+    }
+   
     // text.pop
     //  console.log(newtask)
     setText("")
@@ -37,15 +43,15 @@ function App() {
 
   // ..........Event ho rha hai ..................
   // Button delete  ((filter ke ander arrelement? kya role hai) phla element zruri hai kyuki humne second index ko use karna hai varna usko pta nahi lgega ki index hai wo yeh smjhega ki wo !st element hai wo index ki value nhi element ki value dega ) 
-  // (Filter : Test pass conditions ke according chlta hai )
+  // (Filter : Test pass conditions ke according chlta hai pass ko rakh leta hai (humne ulta kia ) )
   const btndelete = (id, listtype) => {
-    // checking fo confirm 
-    if (listtype == "tasklist") {
+    // checking fo confirm window.confirm true return karta hai ya false deending on click 
+    if (listtype == "tasklistItems") {
       if (window.confirm('Are you sure you wish to delete this item?')) {
-        const newlist = update.filter((ele, i) => {
+        const newlist = tasklistItems.filter((ele, i) => {
           return id !== i
         })
-        setUpdate(newlist)
+        setTasklistItems(newlist)
       }
     }
     else {
@@ -61,13 +67,13 @@ function App() {
 
   // task list element remove then we use filter and comparing statement 
   const removecheckbox = (id) => {
-    const newlist = update.filter((ele, i) => {
+    const newlist = tasklistItems.filter((ele, i) => {
       return id !== i
     })
-    setUpdate(newlist)
+    setTasklistItems(newlist)
 
     // Data transfer to complete task
-    const dltlist = update.filter((dltele, i) => {
+    const dltlist = tasklistItems.filter((dltele, i) => {
       return id == i
     })
     setComplete([...complete, ...dltlist])
@@ -88,7 +94,7 @@ function App() {
       console.log(ele)
       return id == i
     })
-    setUpdate([...update, ...undoitem])
+    setTasklistItems([...tasklistItems, ...undoitem])
   }
 
 
@@ -97,9 +103,9 @@ function App() {
   }
 
   const editTick = (id) => {
-    var newArr = [...update]
+    var newArr = [...tasklistItems]
     newArr[id] = inpchange
-    setUpdate(newArr)
+    setTasklistItems(newArr)
     SetEdit('')
   }
 
@@ -107,7 +113,7 @@ function App() {
   const Store = (event) => {
     setInpchange(event.target.value)
     // console.log(event)
-    // Store(...update)
+    // Store(...tasklistItems)
   }
 
   // var task1 = 'submit Assignment'
@@ -121,7 +127,7 @@ function App() {
         </div>
         <div className="task-row">
           <TaskList
-            task={update}
+            task={tasklistItems}
             callback={btndelete}
             checkbox={removecheckbox}
             edit={edit}
