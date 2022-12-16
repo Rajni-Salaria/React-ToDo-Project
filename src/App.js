@@ -9,7 +9,7 @@ import { useState } from "react";
 function App() {
   // state  and useState and type 
   let [text, setText] = useState("");
-  let [tasklistItems, setTasklistItems] = useState([]);          
+  let [tasklistItems, setTasklistItems] = useState([]);
   let [complete, setComplete] = useState([]);
   let [edit, SetEdit] = useState("");
   let [inpchange, setInpchange] = useState("")
@@ -29,12 +29,12 @@ function App() {
   // ..............Event Ho rha hai ..............................
   // Add button par click krte hi tasklistItems value dega 
   function btnClick() {
-    if (text === ""){
+    if (text === "") {
       alert("Enter the task")
-    } else{
+    } else {
       setTasklistItems([...tasklistItems, text]);
     }
-   
+
     // text.pop
     //  console.log(newtask)
     setText("")
@@ -74,7 +74,7 @@ function App() {
 
     // Data transfer to complete task
     const dltlist = tasklistItems.filter((dltele, i) => {
-      return id == i
+      return id === i
     })
     setComplete([...complete, ...dltlist])
 
@@ -97,11 +97,12 @@ function App() {
     setTasklistItems([...tasklistItems, ...undoitem])
   }
 
-
+  //  edit task
   const Tickclick = (id) => {
     SetEdit(id)
   }
 
+  // check tick after edit
   const editTick = (id) => {
     var newArr = [...tasklistItems]
     newArr[id] = inpchange

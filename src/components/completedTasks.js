@@ -8,7 +8,7 @@ function completedTask(props) {
                     <div className="task-list-item" key={i}>
                         <img src="/assets/arrow-u-left-bottom.png" onClick={() => props.undo(i)} />
                         <p className="completed-task-name"> {chk} </p>
-                        <img src="/assets/delete.png" className="completeimg" onClick={() => props.callback(i, "completetask")} />
+                        <img src="/assets/delete.png" className="completeimg" onClick={() => props.callback(i, "listtype")} />
                     </div>)
             })
             }
